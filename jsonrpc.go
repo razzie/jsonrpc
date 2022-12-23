@@ -229,7 +229,9 @@ func (j *JsonRPC) Serve() {
 			}
 
 		} else {
-			fmt.Println("msg decode error:", err)
+			if err != io.EOF {
+				fmt.Println("msg decode error:", err)
+			}
 			break
 		}
 		msg.reset()
